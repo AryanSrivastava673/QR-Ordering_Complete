@@ -1,0 +1,20 @@
+[
+    {
+        "id": 5,
+        "name": "Croissant",
+        "description": "Buttery and flaky French pastry",
+        "price": 2.0,
+        "imageUrl": "images/croissant.jpg",
+        "available": true,
+        "categoryName": "Pastries"
+    },
+    {
+        "id": 6,
+        "name": "Muffin",
+        "description": "Blueberry muffin with fresh blueberries",
+        "price": 2.5,
+        "imageUrl": "images/muffin.jpg",
+        "available": true,
+        "categoryName": "Pastries"
+    }
+]

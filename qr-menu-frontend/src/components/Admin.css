@@ -1,0 +1,71 @@
+/* General layout styles */
+h2 {
+    padding-left: 10px;
+    /* text-align: center; */
+    color: #564c41;
+}
+
+/* Styles for Table Grid */
+.tables-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+
+.tables-grid button {
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #c0924a;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.tables-grid button:hover {
+    background-color: #edb65e;
+}
+
+/* Styles for Orders Container */
+.orders-container {
+    margin-top: 20px;
+    background-color: #f9f9f9;
+    border-top: 2px solid #4CAF50;
+    padding: 20px;
+    overflow-y: auto; /* Makes the container scrollable */
+    position: relative;
+}
+
+/* Styles for individual order */
+.orders-container div {
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+/* Styles for buttons within orders container */
+.orders-container button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #cd6a4c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.orders-container button:hover {
+    background-color: #e64a19;
+}
+
+/* Checkbox styling */
+input[type="checkbox"] {
+    margin-right: 10px;
+}
