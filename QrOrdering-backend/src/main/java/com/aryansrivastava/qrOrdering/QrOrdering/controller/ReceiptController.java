@@ -7,7 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin
 @RestController
 @RequestMapping("/api/receipt")
 public class ReceiptController {
@@ -19,9 +18,6 @@ public class ReceiptController {
     public ResponseEntity<ReceiptDTO> checkout(@PathVariable String tableNo){
         ReceiptDTO receiptDTO= receiptService.createReceipt(tableNo);
         return ResponseEntity.status(HttpStatus.CREATED).body(receiptDTO);
-
-
-
     }
 
 }

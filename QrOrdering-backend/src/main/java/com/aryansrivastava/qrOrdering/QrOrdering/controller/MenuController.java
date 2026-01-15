@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin
-@RequestMapping("/api/{table_number}/menu")
+@RequestMapping("/api/menu")
 @RequiredArgsConstructor
 public class MenuController {
     @Autowired
@@ -30,18 +29,18 @@ public class MenuController {
         return ResponseEntity.ok(menuItems);
     }
 
-//    @PostMapping("/addMenuItem")
-//    public ResponseEntity<MenuItem> addMenuItem(@RequestBody MenuItem menuItem) {
-//        return ResponseEntity.ok(menuService.addMenuItem(menuItem));
-//    }
+    @PostMapping("/addMenuItem")
+    public ResponseEntity<MenuItem> addMenuItem(@RequestBody MenuItemDTO menuItemDto) {
+        return ResponseEntity.ok(menuService.addMenuItem(menuItemDto));
+    }
 
-//    @PutMapping("/{id}")
-//    public ResponseEntity<MenuItem> updateMenuItem(
-//            @PathVariable Long id,
-//            @RequestBody MenuItem menuItem
-//    ) {
-//        return ResponseEntity.ok(menuService.updateMenuItem(id, menuItem));
-//    }
+    @PutMapping("/{id}")
+    public ResponseEntity<MenuItem> updateMenuItem(
+            @PathVariable Long id,
+            @RequestBody MenuItem menuItem
+    ) {
+        return ResponseEntity.ok(menuService.updateMenuItem(id, menuItem));
+    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteMenuItem(@PathVariable Long id) {

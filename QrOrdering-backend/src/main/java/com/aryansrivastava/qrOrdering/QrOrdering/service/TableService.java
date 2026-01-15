@@ -2,6 +2,7 @@ package com.aryansrivastava.qrOrdering.QrOrdering.service;
 
 import com.aryansrivastava.qrOrdering.QrOrdering.dto.CartItemDTO;
 import com.aryansrivastava.qrOrdering.QrOrdering.dto.MenuItemDTO;
+import com.aryansrivastava.qrOrdering.QrOrdering.dto.TableDTO;
 import com.aryansrivastava.qrOrdering.QrOrdering.model.CartItem;
 import com.aryansrivastava.qrOrdering.QrOrdering.model.MenuItem;
 import com.aryansrivastava.qrOrdering.QrOrdering.model.RestTable;
@@ -97,6 +98,19 @@ public class TableService {
         return cartItem;
     }
 
+    @Transactional
+    public RestTable addTable(TableDTO dto) {
+        // Check if table already exists
+        if (tableRepository.existsById(dto.getTableNumber())) {
+            throw new org.springframework.web.server.ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT, "Table already exists");
+        }
+        RestTable table = new RestTable();
+        table.setTableNumber(dto.getTableNumber());
+        table.setQrCodeUrl(dto.getQrCodeUrl());
+        table.setCartItems(new java.util.ArrayList<>());
+        return tableRepository.save(table);
+    }
+
 }
 
 /*
@@ -112,4 +126,3 @@ public class TableService {
 
 
  */
-

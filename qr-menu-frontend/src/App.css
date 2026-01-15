@@ -1,11 +1,11 @@
-/* General resetting for padding and margin */
+/* Dark cafe theme - preserves layout and positioning */
 html, body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  font-family: 'Roboto', sans-serif;
-  background: #f0f0f0;
-  color: #333;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 60%);
+  color: var(--muted);
 }
 
 /* Universal box-sizing */
@@ -15,11 +15,11 @@ html, body {
   box-sizing: border-box;
 }
 
-/* Navbar styling */
+/* Navbar styling (layout unchanged) */
 nav {
-  background: linear-gradient(90deg,  #ab5a03b0, #fcd998);
-  color: #ffffff;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  background: linear-gradient(90deg, rgba(20,13,8,0.95), rgba(82,40,9,0.95));
+  color: #fff;
+  box-shadow: 0 6px 30px rgba(0,0,0,0.6);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -30,15 +30,19 @@ nav {
   top: 0;
   left: 0;
   z-index: 1000;
+  backdrop-filter: blur(4px);
 }
 
 nav h1 {
   margin: 0;
   font-size: 24px;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: color 0.3s ease, transform 0.25s ease;
+  font-family: 'Poppins', sans-serif;
 }
+
+nav h1:hover { color: var(--accent); transform: translateY(-2px);} 
 
 nav ul {
   list-style: none;
@@ -47,20 +51,21 @@ nav ul {
   padding: 0;
   margin: 0;
   font-weight: 500;
-  
   transition: max-height 0.5s ease, opacity 0.5s ease;
 }
 
 nav ul li {
   padding: 10px 15px;
   cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
+  transition: background-color 0.25s, color 0.25s, transform 0.25s;
+  border-radius: 6px;
 }
 
 nav ul li:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255,255,255,0.03);
+  color: var(--accent);
+  transform: translateY(-2px);
 }
-
 
 /* Mobile nav styles */
 .hamburger {
@@ -71,9 +76,9 @@ nav ul li:hover {
 
 .hamburger div {
   width: 25px;
-  height: 1px;
+  height: 2px;
   background-color: #fff;
-  margin: 5px 0;
+  margin: 6px 0;
   transition: 0.4s;
 }
 
@@ -83,27 +88,30 @@ body {
   padding-bottom: 70px;
 }
 
-/* Menu item styling */
+/* Menu item styling - keep layout but modernize visuals */
 .menu-item {
-  background: #ffffff;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
   margin: 8px;
   padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease, font-size 0.3s ease;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.03);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+  transition: transform 0.28s cubic-bezier(.2,.9,.27,1), box-shadow 0.25s;
 }
 
 .menu-item:hover {
-  transform: translateY(-3px);
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
 }
 
 .menu-item.expanded {
-  transform: scale(1.05);
+  transform: scale(1.04);
   font-size: 1.2rem;
   font-weight: 600;
   z-index: 10;
-  background-color: #f9f9f9;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+  border-color: rgba(202,167,116,0.12);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.7);
   margin-top: 10px;
   margin-bottom: 10px;
 }
@@ -125,8 +133,8 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: url('') no-repeat center center / cover;
-  filter: blur(2px);
+  background-size: cover;
+  filter: blur(2px) saturate(0.9);
   transition: filter 0.3s ease-in-out;
   z-index: -1;
 }
@@ -136,16 +144,18 @@ body {
   z-index: 2;
   max-width: 800px;
   padding: 20px;
-  color: #c6844a;
+  color: var(--accent);
+  text-shadow: 0 1px 0 rgba(0,0,0,0.6);
 }
 
+/* Cart (bottom) container - keep positioning but restyle visuals */
 .cart-container {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: #ffffff;
-  box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.12);
+  background: linear-gradient(180deg, rgba(20,13,8,0.86), rgba(30,20,15,0.9));
+  box-shadow: 0 -20px 40px rgba(0,0,0,0.6);
   padding: 20px;
   transition: transform 300ms ease-in-out;
   z-index: 1000;
@@ -153,8 +163,11 @@ body {
   border-top-right-radius: 20px;
   display: flex;
   flex-direction: column;
-  min-height: 40%; /* Ensure there's a minimum height */
+  min-height: 40%; /* unchanged layout */
   overflow: hidden;
+  color: var(--muted);
+  border: 1px solid rgba(255,255,255,0.02);
+  backdrop-filter: blur(6px) saturate(0.9);
 }
 
 .cart-content {
@@ -167,7 +180,7 @@ body {
   text-align: center;
   padding: 10px;
   font-size: 16px;
-  color: #666;
+  color: rgba(255,255,255,0.6);
   flex: 1;  /* Makes the message center in the available vertical space */
   display: flex;
   align-items: center; /* Center the text vertically */
@@ -181,11 +194,11 @@ body {
 
 .close-button {
   position: absolute;
-  top: 5px;
-  right: 10px;
+  top: 8px;
+  right: 12px;
   border: none;
   background: none;
-  color: #333;
+  color: var(--muted);
   cursor: pointer;
   font-size: 20px;
 }
@@ -197,25 +210,26 @@ body {
   padding: 10px 0;
   width: 100%; /* Ensures full width and alignment */
   text-align: left; /* Aligns text to the left */
+  border-bottom: 1px dashed rgba(255,255,255,0.02);
 }
 
-.item-details {
-  align-self: flex-start;
-  text-align: left;
-}
+.item-details h4 { margin: 0; color: #fff; }
+.item-details p { margin: 2px 0; color: rgba(255,255,255,0.75); }
 
 .remove-btn {
-  padding: 5px 10px;
+  padding: 6px 12px;
   margin-left: auto; /* Ensures button stays to the right */
-  background-color: #dc3545;
+  background: linear-gradient(90deg, var(--accent-2), var(--accent));
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
+  box-shadow: 0 6px 18px rgba(139,90,43,0.18);
 }
 
 .remove-btn:hover {
-  opacity: 0.8;
+  opacity: 0.9;
+  transform: translateY(-2px);
 }
 
 .place-order-button-container {
@@ -224,23 +238,23 @@ body {
 }
 
 .place-order-btn {
-  background-color: #4CAF50; /* Green background */
-  color: white;
+  background: linear-gradient(90deg, var(--accent), #ffdca8);
+  color: #2a1e12;
   padding: 10px 20px;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   font-size: 16px;
   cursor: pointer;
   width: 100%; /* Full width */
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Add some shadow */
+  box-shadow: 0 10px 30px rgba(202,167,116,0.12); /* Warm glow */
 }
 
 .place-order-btn:hover {
-  background-color: #45a049; /* Darker green */
+  transform: translateY(-3px);
+  box-shadow: 0 20px 40px rgba(202,167,116,0.16);
 }
 
-
-/* Media Queries for responsiveness */
+/* Media Queries for responsiveness (no layout changes) */
 @media (max-width: 768px) {
   body{
     padding-top: 40px;
@@ -259,13 +273,13 @@ body {
     font-size: 20px;
     margin-bottom: 5px;
   }
-/* Adjustments to nav ul for smooth dropdown */
+
 nav ul {
   position: absolute;
   top: 40px; /* Systematically positioned right under the nav bar */
   left: 0;
   width: 100%;
-  background: linear-gradient(90deg,  #ab5a03b0, #fcd998);
+  background: linear-gradient(90deg, rgba(20,13,8,0.95), rgba(82,40,9,0.95));
   flex-direction: column;
   max-height: 0;
   overflow: hidden;

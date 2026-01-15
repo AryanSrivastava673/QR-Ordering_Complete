@@ -1,10 +1,26 @@
+/* Global base & font stack */
+:root{
+  --bg: #0f0b08; /* deep espresso */
+  --bg-2: #18110d; /* slightly lighter */
+  --panel: rgba(255,255,255,0.03);
+  --card: rgba(255,255,255,0.04);
+  --muted: #cfc2b3; /* warm cream */
+  --accent: #caa774; /* caramel */
+  --accent-2: #8b5a2b; /* coffee */
+  --glass: rgba(255,255,255,0.06);
+  --success: #7ed57e;
+  --danger: #ff6b6b;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 60%);
+  color: var(--muted);
 }
 
 code {

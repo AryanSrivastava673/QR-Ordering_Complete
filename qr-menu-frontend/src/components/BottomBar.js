@@ -10,9 +10,9 @@ const BottomBar = () => {
     }
 
     return (
-        <div style={{ position: 'fixed', bottom: 0, width: '100%', backgroundColor: '#ccc', padding: '10px', textAlign: 'center' }}>
-            <button onClick={toggleCart}>View Cart</button>
-            {isCartVisible && <Cart onClose={toggleCart}/>}
+        <div className="bottom-bar">
+            <button onClick={toggleCart} className="bottom-bar-btn">View Cart</button>
+            {isCartVisible && <Cart onClose={toggleCart}/>} 
         </div>
     );
 };

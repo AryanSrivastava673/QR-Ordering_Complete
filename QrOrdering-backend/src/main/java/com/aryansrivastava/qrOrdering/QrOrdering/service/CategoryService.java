@@ -22,10 +22,24 @@ public class CategoryService {
                 .collect(Collectors.toList());
     }
 
+    public CategoryDTO createCategory(CategoryDTO categoryDTO) {
+        Category category = convertToEntity(categoryDTO);
+        Category saved = categoryRepository.save(category);
+        return convertToDto(saved);
+    }
+
     private CategoryDTO convertToDto(Category category) {
         CategoryDTO dto = new CategoryDTO();
         dto.setId(category.getId());
         dto.setName(category.getName());
+        dto.setDescription(category.getDescription());
         return dto;
+    }
+
+    private Category convertToEntity(CategoryDTO dto) {
+        Category category = new Category();
+        category.setName(dto.getName());
+        category.setDescription(dto.getDescription());
+        return category;
     }
 }

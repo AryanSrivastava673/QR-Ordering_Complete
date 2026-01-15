@@ -1,20 +1,13 @@
 import React from 'react';
+import './Notification.css';
 
 const Notification = ({ message, type }) => {
-    if (!message) return null; // Renders nothing if no message
-
-    const notificationStyle = {
-        position: 'fixed',
-        top: '10px',
-        right: '10px',
-        padding: '5px 10px',
-        borderRadius: '5px',
-        color: '#fff',
-        backgroundColor: type === 'error' ? '#f44336' : '#4CAF50',
-        zIndex: 1500,
-    };
-
-    return <div style={notificationStyle}>{message}</div>;
+    if (!message) return null;
+    return (
+        <div className={`notification notification-${type === 'error' ? 'error' : 'success'}`}>
+            {message}
+        </div>
+    );
 };
 
 export default Notification;

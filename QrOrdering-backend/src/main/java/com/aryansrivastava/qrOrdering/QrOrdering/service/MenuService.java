@@ -51,24 +51,39 @@ public class MenuService {
     }
 
 
-    public MenuItem addMenuItem(MenuItem menuItem) {
+    public MenuItem addMenuItem(MenuItemDTO menuItemDTO) {
+        // Map DTO to entity
+        MenuItem menuItem = new MenuItem();
+        menuItem.setName(menuItemDTO.getName());
+        menuItem.setDescription(menuItemDTO.getDescription());
+        menuItem.setPrice(menuItemDTO.getPrice());
+        menuItem.setImageUrl(menuItemDTO.getImageUrl());
+        menuItem.setAvailable(menuItemDTO.isAvailable());
+
+        // Resolve category by name if provided
+        if (menuItemDTO.getCategoryName() != null && !menuItemDTO.getCategoryName().isBlank()) {
+            Category category = categoryRepository.findByName(menuItemDTO.getCategoryName())
+                    .orElseThrow(() -> new CategoryNotFoundException("No category with name " + menuItemDTO.getCategoryName()));
+            menuItem.setCategory(category);
+        }
+
         return menuItemRepository.save(menuItem);
     }
 
     public void deleteMenuItem(Long id) {
         menuItemRepository.deleteById(id);
     }
-//
-//    public MenuItem updateMenuItem(Long id, MenuItem menuItem) {
-//        MenuItem existing = menuItemRepository.findById(id)
-//                .orElseThrow(() -> new RuntimeException("Menu item not found"));
-//
-//        existing.setName(menuItem.getName());
-//        existing.setDescription(menuItem.getDescription());
-//        existing.setPrice(menuItem.getPrice());
-//        existing.setAvailable(menuItem.isAvailable());
-//        existing.setCategory(menuItem.getCategory());
-//
-//        return menuItemRepository.save(existing);
-//    }
+
+    public MenuItem updateMenuItem(Long id, MenuItem menuItem) {
+        MenuItem existing = menuItemRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Menu item not found"));
+
+        existing.setName(menuItem.getName());
+        existing.setDescription(menuItem.getDescription());
+        existing.setPrice(menuItem.getPrice());
+        existing.setAvailable(menuItem.isAvailable());
+        existing.setCategory(menuItem.getCategory());
+
+        return menuItemRepository.save(existing);
+    }
 }

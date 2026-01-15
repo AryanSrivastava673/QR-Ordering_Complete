@@ -1,20 +1,23 @@
 .receipt-container {
-    max-width: 300px;
+    max-width: 320px;
     margin: 2rem auto;
     padding: 1rem;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border: 1px solid rgba(255,255,255,0.02);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.6);
     font-family: 'Courier New', Courier, monospace;
+    color: var(--muted);
+    border-radius: 8px;
 }
 
 .receipt-header {
     text-align: center;
-    border-bottom: 1px solid black;
+    border-bottom: 1px dashed rgba(255,255,255,0.03);
 }
 
 .receipt-header h1 {
-    font-size: 1.5em;
+    font-size: 1.4em;
+    color: var(--accent);
 }
 
 .receipt-body {
@@ -22,7 +25,8 @@
 }
 
 .receipt-info {
-    font-size: 0.8em;
+    font-size: 0.85em;
+    color: rgba(255,255,255,0.8);
 }
 
 .receipt-items .item-row {
@@ -36,7 +40,7 @@
 }
 
 .receipt-totals {
-    border-top: 1px dashed #000;
+    border-top: 1px dashed rgba(255,255,255,0.03);
     margin-top: 8px;
     padding-top: 8px;
 }
@@ -44,10 +48,12 @@
 .receipt-totals p, .receipt-totals h3 {
     margin: 3px 0;
     text-align: right;
+    color: rgba(255,255,255,0.9);
 }
 
 .receipt-footer {
     text-align: center;
     margin-top: 12px;
     font-size: 0.8em;
+    color: rgba(255,255,255,0.7);
 }

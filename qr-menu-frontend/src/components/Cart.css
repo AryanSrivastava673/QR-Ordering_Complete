@@ -1,0 +1,11 @@
+/* Cart-specific tweaks to match dark cafe theme */
+.cart-container { /* visual only - layout unchanged */
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+}
+
+.cart-item { padding: 12px 0; }
+
+.remove-btn { font-weight: 600; }
+
+.place-order-btn { font-weight: 700; }
